@@ -35,8 +35,6 @@ a {
 .site-header {
   border-bottom: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.94);
-  position: sticky;
-  top: 0;
   z-index: 2;
 }
 
@@ -144,14 +142,77 @@ h3 {
   background: var(--paper);
 }
 
-.command {
+.command-wrap {
+  margin: 30px 0 0;
+  max-width: 760px;
+}
+
+.command-copy {
+  align-items: center;
   background: var(--code);
+  border: 0;
   border-radius: 8px;
   color: var(--code-text);
-  margin: 30px 0 0;
-  max-width: 640px;
+  cursor: pointer;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  min-height: 76px;
+  width: 100%;
   overflow-x: auto;
-  padding: 18px;
+  padding: 20px 22px;
+  text-align: left;
+}
+
+.command-copy code {
+  font-size: clamp(1rem, 2vw, 1.28rem);
+  white-space: nowrap;
+}
+
+.command-copy:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.copy-status {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  color: var(--code-text);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.82rem;
+  gap: 7px;
+  font-weight: 760;
+  min-height: 36px;
+  opacity: 0;
+  padding: 7px 10px;
+  transform: translateX(4px);
+  transition: opacity 160ms ease, transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.command-copy:hover .copy-status,
+.command-copy:focus-visible .copy-status,
+.command-copy.copied .copy-status {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.copy-icon {
+  fill: none;
+  height: 18px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  width: 18px;
+}
+
+.command-copy.copied .copy-status {
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 code,
@@ -185,6 +246,21 @@ pre {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.example-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.section-heading {
+  margin-bottom: 22px;
+  max-width: 760px;
+}
+
+.section-heading p {
+  color: var(--muted);
+}
+
 .card {
   background: var(--paper);
   border: 1px solid var(--line);
@@ -196,6 +272,116 @@ pre {
 .doc p,
 .doc li {
   color: var(--muted);
+}
+
+.examples-hero {
+  padding-bottom: 40px;
+}
+
+.example-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.example-card.featured {
+  display: grid;
+  grid-template-rows: 180px 1fr;
+}
+
+.site-preview {
+  background: var(--code);
+  color: var(--code-text);
+  display: grid;
+  grid-template-rows: 34px 1fr;
+  min-height: 180px;
+}
+
+.preview-bar {
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  gap: 7px;
+  padding: 0 14px;
+}
+
+.preview-bar span {
+  background: rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  display: block;
+  height: 9px;
+  width: 9px;
+}
+
+.preview-body {
+  align-content: end;
+  display: grid;
+  gap: 8px;
+  padding: 22px;
+}
+
+.preview-body strong {
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.preview-body span {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.bitsboard-preview {
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.92), rgba(20, 20, 20, 0.92)),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.32), transparent 34%);
+}
+
+.kanso-preview {
+  background:
+    linear-gradient(135deg, rgba(20, 20, 20, 0.96), rgba(154, 52, 18, 0.82)),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 34%);
+}
+
+.example-content {
+  padding: 20px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.tag-row span {
+  background: var(--wash);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 5px 9px;
+}
+
+.workflow-list {
+  display: grid;
+  gap: 12px;
+}
+
+.workflow-list article {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+
+.workflow-list p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.case-study h2 {
+  margin-top: 36px;
 }
 
 .file-model {
@@ -256,6 +442,12 @@ pre {
   justify-content: space-between;
 }
 
+.footer-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 @media (max-width: 780px) {
   .nav {
     align-items: flex-start;
@@ -271,6 +463,7 @@ pre {
   }
 
   .two-column,
+  .example-grid,
   .grid {
     grid-template-columns: 1fr;
   }

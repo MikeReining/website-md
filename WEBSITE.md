@@ -33,6 +33,8 @@ Use the WordPress `.org` mental model when helpful: open standard first, ecosyst
 - `/`: landing page and quick start.
 - `/spec`: readable `WEBSITE.md` specification.
 - `/examples`: example websites and instruction files.
+- `/examples/bitsboard`: live Bitsboard case study.
+- `/examples/kansobooks`: live KansoBooks case study.
 - `/guides/replace-squarespace`: guide for replacing a hosted website builder with an AI-operated site.
 - `/guides/create-site`: guide for creating a new site with an AI agent.
 - `/docs/cli`: command reference.
@@ -82,6 +84,8 @@ Initial canonical URLs:
 - `/`
 - `/spec`
 - `/examples`
+- `/examples/bitsboard`
+- `/examples/kansobooks`
 - `/guides/replace-squarespace`
 - `/guides/create-site`
 - `/docs/cli`
