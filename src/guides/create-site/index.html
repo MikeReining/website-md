@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create a Website.md Site</title>
+    <meta name="description" content="Create a simple AI-operable website with WEBSITE.md and an AI coding agent.">
+    <link rel="canonical" href="https://websitemd.org/guides/create-site/">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="/">Website.md</a>
+        <div class="nav-links">
+          <a href="/spec/">Spec</a>
+          <a href="/examples/">Examples</a>
+          <a href="/guides/create-site/">Create site</a>
+          <a href="/docs/cli/">CLI</a>
+        </div>
+      </nav>
+    </header>
+    <main class="doc">
+      <h1>Create a site</h1>
+      <p>Create the starter, open the folder in an AI coding agent, and ask it to build the site using the instruction files.</p>
+      <pre><code>npm create website-md@latest my-site
+cd my-site
+npm run dev</code></pre>
+      <h2>Prompt</h2>
+      <pre><code>Use WEBSITE.md, DESIGN.md, COPY.md, and SEO.md to create a polished one-page website for my business. Preview it locally and run checks before you finish.</code></pre>
+      <p>The agent should edit files, preview locally, fix visible layout issues, run checks, and report deploy steps.</p>
+    </main>
+  </body>
+</html>

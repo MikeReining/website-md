@@ -1,0 +1,13 @@
+# Website.md
+
+Website.md is an open convention for AI-operable websites.
+
+The core claim: the website editor is disappearing. WEBSITE.md tells an AI coding agent how to build, edit, preview, validate, and publish a website.
+
+Important files:
+
+- WEBSITE.md: website structure, canonical URLs, content sources, editing rules, preview, validation, and publishing.
+- DESIGN.md: visual system and taste.
+- COPY.md: voice and messaging.
+- SEO.md: URL, metadata, search, and AI discovery rules.
+- AGENTS.md: repository-wide agent behavior.

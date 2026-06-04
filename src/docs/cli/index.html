@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Website.md CLI</title>
+    <meta name="description" content="The proposed Website.md command surface for creating, linting, checking, and exporting AI-operable website context.">
+    <link rel="canonical" href="https://websitemd.org/docs/cli/">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="/">Website.md</a>
+        <div class="nav-links">
+          <a href="/spec/">Spec</a>
+          <a href="/examples/">Examples</a>
+          <a href="/guides/create-site/">Create site</a>
+          <a href="/docs/cli/">CLI</a>
+        </div>
+      </nav>
+    </header>
+    <main class="doc">
+      <h1>CLI</h1>
+      <p>The first command surface should stay small: create a starter, then add lint as the second package.</p>
+      <pre><code>npm create website-md@latest my-site</code></pre>
+      <p>The create command works after the npm package create-website-md is published. npm create website-md resolves to create-website-md.</p>
+      <h2>Later</h2>
+      <pre><code>npx website-md lint
+website-md init
+website-md check
+website-md doctor
+website-md export-llms
+website-md extract &lt;url&gt;</code></pre>
+    </main>
+  </body>
+</html>

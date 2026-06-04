@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WEBSITE.md Spec</title>
+    <meta name="description" content="The draft WEBSITE.md specification for AI-operable websites.">
+    <link rel="canonical" href="https://websitemd.org/spec/">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="/">Website.md</a>
+        <div class="nav-links">
+          <a href="/spec/">Spec</a>
+          <a href="/examples/">Examples</a>
+          <a href="/guides/create-site/">Create site</a>
+          <a href="/docs/cli/">CLI</a>
+        </div>
+      </nav>
+    </header>
+    <main class="doc">
+      <h1>WEBSITE.md Spec</h1>
+      <p>WEBSITE.md is a root-level Markdown file that gives AI agents durable instructions for operating a website.</p>
+      <h2>Required sections</h2>
+      <ul>
+        <li>Site Identity</li>
+        <li>Primary User Goals</li>
+        <li>Site Structure</li>
+        <li>Canonical URLs</li>
+        <li>Content Sources</li>
+        <li>Editing Rules</li>
+        <li>Preview And Validation</li>
+        <li>Publishing</li>
+      </ul>
+      <h2>Skeleton</h2>
+      <pre><code># WEBSITE.md
+
+## Site Identity
+
+Name:
+Primary domain:
+Owner:
+Site type:
+Audience:
+Primary job:
+
+## Preview And Validation
+
+npm install
+npm run dev
+npm run build
+npm run check</code></pre>
+      <p>The full draft lives in the repo as SPEC.md. Keep the first spec small enough that an agent can read it and act.</p>
+    </main>
+  </body>
+</html>

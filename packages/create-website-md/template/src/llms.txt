@@ -1,0 +1,11 @@
+# New Website.md Site
+
+This is a simple static-first website operated by AI using WEBSITE.md.
+
+Important files:
+
+- WEBSITE.md: website operations.
+- DESIGN.md: visual direction.
+- COPY.md: voice.
+- SEO.md: discovery rules.
+- AGENTS.md: agent instructions.

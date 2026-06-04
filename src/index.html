@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Website.md - Website instructions for AI agents</title>
+    <meta name="description" content="WEBSITE.md is an open convention that tells AI agents how to build, edit, preview, validate, and publish websites.">
+    <link rel="canonical" href="https://websitemd.org/">
+    <meta property="og:title" content="Website.md">
+    <meta property="og:description" content="The website editor is disappearing. WEBSITE.md tells your AI agent how to operate your website.">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="/">Website.md</a>
+        <div class="nav-links">
+          <a href="/spec/">Spec</a>
+          <a href="/examples/">Examples</a>
+          <a href="/guides/create-site/">Create site</a>
+          <a href="/docs/cli/">CLI</a>
+          <a href="/spec/">Convention</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Open convention for AI-operable websites</p>
+        <h1>The website editor is disappearing.</h1>
+        <p class="lead">WEBSITE.md tells your AI agent how to build, edit, preview, validate, and publish your website.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="/guides/create-site/">Create a site</a>
+          <a class="button secondary" href="/spec/">Read the spec</a>
+          <a class="button secondary" href="/spec/">View the convention</a>
+        </div>
+        <pre class="command"><code>npm create website-md@latest my-site</code></pre>
+      </section>
+
+      <section class="band wash">
+        <div class="inner two-column">
+          <div>
+            <h2>Your website is a repo. Your AI is the editor.</h2>
+            <p>Website builders wrapped sites in hosted editors. AI agents change the tradeoff. For many simple sites, the better interface is a local agent that can read instructions, edit files, preview changes, run checks, and prepare a deploy.</p>
+            <p class="proof">This site is operated by its own WEBSITE.md.</p>
+          </div>
+          <pre class="file-model"><code>README.md    = explain the project to humans
+AGENTS.md    = explain the repo to AI agents
+DESIGN.md    = explain the visual system to AI agents
+COPY.md      = explain the voice to AI agents
+SEO.md       = explain discovery rules to AI agents
+WEBSITE.md   = explain the website to AI agents</code></pre>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="inner">
+          <h2>How it works</h2>
+          <div class="grid">
+            <article class="card">
+              <h3>1. Add instructions</h3>
+              <p>Put WEBSITE.md beside AGENTS.md, DESIGN.md, COPY.md, and SEO.md.</p>
+            </article>
+            <article class="card">
+              <h3>2. Ask your agent</h3>
+              <p>Tell Codex, Cursor, Claude Code, or another coding agent what to change.</p>
+            </article>
+            <article class="card">
+              <h3>3. Check and publish</h3>
+              <p>The agent previews locally, fixes visible issues, runs checks, and reports deploy steps.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band wash">
+        <div class="inner two-column">
+          <div>
+            <h2>The 60-second demo</h2>
+            <p>Create a starter, ask an agent to build a site, watch it edit files, preview locally, fix one visible issue, run checks, and leave you with a deploy-ready folder.</p>
+            <div class="inline-actions">
+              <a class="button primary" href="/examples/">See examples</a>
+              <a class="button secondary" href="/docs/cli/">Read CLI docs</a>
+            </div>
+          </div>
+          <ol class="steps">
+            <li>Create starter.</li>
+            <li>Open in an AI coding agent.</li>
+            <li>Prompt the agent with the instruction files.</li>
+            <li>Preview, fix, check, deploy.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="inner two-column">
+          <div>
+            <h2>Open standard first.</h2>
+            <p>Website.md belongs on websitemd.org because it should feel like a convention, not another SaaS. The standard stays free. Products, services, templates, audits, and migration help can grow around it later.</p>
+          </div>
+          <div class="card">
+            <h3>Not a hosted builder</h3>
+            <p>Website.md does not replace every CMS or complex web app. It gives AI agents a practical runbook for operating simple websites with source files, previews, checks, and deploys.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">
+        <span>Website.md is an open convention for AI-operable websites.</span>
+        <a href="/spec/">Read the spec</a>
+      </div>
+    </footer>
+  </body>
+</html>
