@@ -35,6 +35,13 @@ Important URLs:
 Current site files:
 
 ```txt
+AGENTS.md
+WEBSITE.md
+DESIGN.md
+COPY.md
+SEO.md
+HOSTING.md
+VERCEL.md
 src/
   index.html
   styles.css
@@ -90,3 +97,5 @@ Keep the dev-server terminal open while previewing.
 
 Target: Vercel, Netlify, Cloudflare Pages, or GitHub Pages.  
 Publish only after build and checks pass.
+
+For the first deployment path, prefer Vercel. Read `HOSTING.md` and `VERCEL.md`.

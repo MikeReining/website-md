@@ -65,12 +65,15 @@ await writeFile(`${packageJsonPath}`, `${JSON.stringify(packageJson, null, 2)}\n
 
 console.log(`Created ${projectName}`);
 console.log("");
-console.log("Next steps:");
-console.log(`  cd ${projectName}`);
-console.log("  npm run dev");
+console.log("AI agent next steps:");
+console.log(`  1. cd ${projectName}`);
+console.log("  2. Read AGENTS.md, WEBSITE.md, DESIGN.md, COPY.md, SEO.md, and HOSTING.md");
+console.log("  3. Run npm run dev");
+console.log("  4. Give the user the local preview URL");
+console.log("  5. Customize the site, then run npm run check and npm run build");
 console.log("");
-console.log("Then open:");
+console.log("Local preview URL:");
 console.log("  http://localhost:4177");
 console.log("");
-console.log("Ask your AI agent:");
-console.log("  Use WEBSITE.md, DESIGN.md, COPY.md, and SEO.md to customize this site.");
+console.log("Deployment:");
+console.log("  Read VERCEL.md and offer the user the two-step Vercel path.");

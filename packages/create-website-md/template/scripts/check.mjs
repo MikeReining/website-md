@@ -3,7 +3,7 @@ import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const requiredFiles = ["WEBSITE.md", "DESIGN.md", "COPY.md", "SEO.md", "AGENTS.md"];
+const requiredFiles = ["WEBSITE.md", "DESIGN.md", "COPY.md", "SEO.md", "AGENTS.md", "HOSTING.md", "VERCEL.md"];
 const requiredSections = [
   "## Site Identity",
   "## Primary User Goals",
