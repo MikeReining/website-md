@@ -117,6 +117,59 @@ Rules:
 - Keep mappings stable enough that preview tooling can use them.
 - Treat addressability as a progressive enhancement; a valid `WEBSITE.md` site does not need to be block-based.
 
+## Addressable Content Primitives
+
+Rich content extensibility should live in portable content first, not in a proprietary editor model.
+
+CommonMark + GFM Markdown should be the default content layer. The portable baseline includes:
+
+- Paragraphs.
+- Headings.
+- Links.
+- Ordered and unordered lists.
+- Tables.
+- Blockquotes.
+- Code blocks.
+- Inline code.
+- Images.
+
+Rules:
+
+- Images should use repo-relative paths or declared media references.
+- Rendered primitives may expose `data-wmd-source`, `data-wmd-role`, and `data-wmd-field`.
+- Agents should add tables, lists, and images by editing Markdown or content files, not by inventing renderer code.
+- Raw HTML is allowed only as a constrained compatibility escape hatch, never the primary extensibility model.
+- User-editable content must not include arbitrary scripts.
+- Validators should check parseable Markdown, resolvable image and media references, safe links, and source mappings when present.
+
+Example source:
+
+```md
+---
+id: comparison
+role: comparison
+---
+
+## Compare options
+
+- Portable source
+- Agent-editable content
+- Static output
+
+| Need | Website.md | Hosted builder |
+| --- | --- | --- |
+| Exportable files | Yes | Usually no |
+
+![Workspace preview](public/images/workspace.jpg)
+```
+
+Rendered source mapping can stay lightweight:
+
+```html
+<section data-wmd-source="content/pages/home.md#comparison" data-wmd-role="comparison">
+  <table data-wmd-field="table">
+```
+
 ## Recommended Skeleton
 
 ````md
@@ -255,6 +308,9 @@ MVP validator should check:
 - URL policy is present.
 - Publishing policy is present.
 - Adjacent files are referenced if they exist.
+- Markdown content is parseable when present.
+- Image and media references resolve when present.
+- Links and user-editable embeds avoid unsafe script execution.
 
 Future validator can parse structured front matter and verify any `data-wmd-source` references found in rendered HTML.
 

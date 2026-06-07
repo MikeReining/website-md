@@ -54,6 +54,8 @@ scripts/
   check.mjs
 ```
 
+When supported by the site renderer, agents may add Markdown-native tables, lists, images, blockquotes, and code blocks. Keep image paths and media references resolvable. Do not add arbitrary scripts or unsafe embeds to user-editable content.
+
 ## Source Addressability
 
 Use `data-wmd-source` on major rendered sections when the source file is clear. Values should be repo-relative paths, optionally with fragments.

@@ -104,6 +104,8 @@ Recommended pattern:
 
 The important idea is not that every site must use blocks. The important idea is that a visible element can point back to a repo-relative source path. That makes click-to-edit and scoped AI changes practical without requiring a hosted website editor.
 
+Website.md should also be extensible through ordinary content primitives. Tables, lists, images, quotes, code examples, and similar elements should be portable Markdown content with source addressability where useful, not proprietary editor features.
+
 ## What This Is Not
 
 This is not a hosted website builder.

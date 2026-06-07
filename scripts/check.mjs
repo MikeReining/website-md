@@ -34,6 +34,28 @@ async function exists(path) {
   }
 }
 
+async function absoluteExists(path) {
+  try {
+    await access(path);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function isExternalRef(ref) {
+  return /^(https?:|data:|mailto:|tel:)/i.test(ref);
+}
+
+async function localAssetExists(file, ref) {
+  const cleanRef = ref.split("#")[0].split("?")[0];
+  if (!cleanRef || isExternalRef(cleanRef)) return true;
+  const assetPath = cleanRef.startsWith("/")
+    ? resolve(root, "src", cleanRef.slice(1))
+    : resolve(dirname(file), cleanRef);
+  return absoluteExists(assetPath);
+}
+
 for (const file of requiredFiles) {
   if (!(await exists(file))) failures.push(`Missing ${file}`);
 }
@@ -65,6 +87,15 @@ for (const file of htmlFiles) {
   if (!html.includes("<title>")) failures.push(`${label} missing <title>`);
   if (!html.includes('name="description"')) failures.push(`${label} missing meta description`);
   if (!html.includes('rel="canonical"')) failures.push(`${label} missing canonical link`);
+
+  for (const match of html.matchAll(/<img\b[^>]*\ssrc="([^"]*)"/gi)) {
+    const src = match[1];
+    if (!src) {
+      failures.push(`${label} has empty image src`);
+    } else if (!(await localAssetExists(file, src))) {
+      failures.push(`${label} image src missing file: ${src}`);
+    }
+  }
 
   for (const match of html.matchAll(/<[a-z][^>]*\sdata-wmd-source="([^"]+)"/gi)) {
     const source = match[1];
