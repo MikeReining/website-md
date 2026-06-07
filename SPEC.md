@@ -80,6 +80,9 @@ Explains how deployment works and what must happen before publish.
 ## Optional Sections
 
 - Source Addressability
+- Content Capabilities
+- Block Front Matter
+- Media References
 - Migration Notes
 - Redirect Policy
 - Forms And Integrations
@@ -109,13 +112,88 @@ Recommended attributes:
 - `data-wmd-source`: repo-relative source path, optionally with a fragment.
 - `data-wmd-role`: semantic role such as `hero`, `nav`, `testimonial`, `pricing`, or `footer`.
 - `data-wmd-field`: editable field within the source, such as `headline`, `body`, `image`, or `cta`.
+- `data-wmd-node`: stable node id when the renderer can provide one.
+- `data-wmd-range`: source line or line/column range, such as `L12-L16` or `L12:C1-L16:C20`.
 
 Rules:
 
 - Prefer repo-relative paths, never absolute local paths.
+- Prefer stable node ids or source ranges over parser-specific AST paths in rendered HTML.
+- Parser-specific AST paths may be tool-internal, but should not be the public convention.
 - Do not expose secrets, private prompts, or user-only data in attributes.
 - Keep mappings stable enough that preview tooling can use them.
 - Treat addressability as a progressive enhancement; a valid `WEBSITE.md` site does not need to be block-based.
+
+Sub-source mapping example:
+
+```html
+<li
+  data-wmd-source="content/pages/home.md#features"
+  data-wmd-role="feature"
+  data-wmd-node="feature-2"
+  data-wmd-range="L18-L20"
+>
+```
+
+## Content Capabilities
+
+A Website.md-compatible site may declare the content primitives and declarative extensions its renderer supports.
+
+Baseline primitives:
+
+- `paragraph`
+- `heading`
+- `link`
+- `ordered_list`
+- `unordered_list`
+- `table`
+- `blockquote`
+- `code_block`
+- `inline_code`
+- `image`
+
+Optional declared extensions may include:
+
+- `callout`
+- `gallery`
+- `embed`
+- `cta`
+- `form`
+- `download`
+
+Rules:
+
+- Baseline primitives should be Markdown-native.
+- Extensions must be declarative, schema-checkable, and safe.
+- Extensions must not require user-editable JavaScript.
+- Agents should consult the site's capabilities before adding content.
+- If a site does not declare support for an extension, the agent should ask or use a baseline primitive fallback.
+
+Example:
+
+```md
+## Content Capabilities
+
+Supported primitives:
+- paragraph
+- heading
+- link
+- ordered_list
+- unordered_list
+- table
+- blockquote
+- code_block
+- inline_code
+- image
+
+Supported extensions:
+- callout
+- gallery
+
+Media references:
+- repo-relative paths
+- `media:key` references when `media.json` exists
+```
 
 ## Addressable Content Primitives
 
@@ -169,6 +247,74 @@ Rendered source mapping can stay lightweight:
 <section data-wmd-source="content/pages/home.md#comparison" data-wmd-role="comparison">
   <table data-wmd-field="table">
 ```
+
+## Block Front Matter
+
+Markdown page and block files may use optional front matter to expose safe layout and rendering knobs without requiring agents to edit HTML or CSS.
+
+Recommended shape:
+
+```md
+---
+wmd:
+  id: comparison
+  role: comparison
+  layout: grid
+  variant: compact
+  columns: 3
+---
+
+## Compare options
+
+| Need | Website.md | Hosted builder |
+| --- | --- | --- |
+| Exportable files | Yes | Usually no |
+```
+
+Rules:
+
+- `wmd.id` should be stable within the file when present.
+- `wmd.role` describes semantic purpose, such as `hero`, `pricing`, `comparison`, `gallery`, `contact`, or `footer`.
+- `wmd.layout`, `wmd.variant`, `columns`, `media`, and similar keys are renderer inputs, not raw CSS.
+- Unknown `wmd` keys should be ignored or rejected according to the site's declared capabilities.
+- Front matter must stay parseable.
+- Agents should change layout through declared front matter options, not by injecting HTML or CSS.
+
+## Media References
+
+Sites may use an optional `media.json` manifest when they need stable media keys in addition to repo-relative file paths.
+
+Example `media.json`:
+
+```json
+{
+  "hero": {
+    "src": "public/images/hero.jpg",
+    "alt": "Founder working at a laptop",
+    "caption": "",
+    "credit": ""
+  }
+}
+```
+
+Markdown may reference media with normal repo-relative paths:
+
+```md
+![Founder working](public/images/hero.jpg)
+```
+
+or manifest keys:
+
+```md
+![Founder working](media:hero)
+```
+
+Rules:
+
+- `media:key` must resolve to `media.json` when used.
+- `alt` should be present before publish.
+- Agents must not invent media keys or fake remote URLs.
+- Tools may pass available media to agents, but the portable source of truth is the manifest or repo files.
 
 ## Recommended Skeleton
 
@@ -308,9 +454,16 @@ MVP validator should check:
 - URL policy is present.
 - Publishing policy is present.
 - Adjacent files are referenced if they exist.
+- Declared content capabilities are valid when present.
 - Markdown content is parseable when present.
-- Image and media references resolve when present.
-- Links and user-editable embeds avoid unsafe script execution.
+- Front matter is parseable when present.
+- Optional `wmd` metadata uses valid declared keys.
+- Tables have valid structure.
+- Repo-relative images resolve.
+- `media:key` references resolve when present.
+- Links do not use unsafe `javascript:` URLs.
+- Raw HTML, scripts, styles, event attributes, and embeds are safe for user-editable content.
+- Source mappings and optional source ranges are valid when present.
 
 Future validator can parse structured front matter and verify any `data-wmd-source` references found in rendered HTML.
 

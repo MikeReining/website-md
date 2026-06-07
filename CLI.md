@@ -72,7 +72,11 @@ Checks:
 - commands are present,
 - URL policy exists,
 - publishing policy exists,
-- SEO/COPY/DESIGN references are coherent.
+- SEO/COPY/DESIGN references are coherent,
+- content capabilities are declared consistently when present,
+- Markdown and front matter are parseable,
+- optional `wmd` metadata uses supported keys,
+- media references and `media:key` values resolve.
 
 ### `website-md check`
 
@@ -88,10 +92,29 @@ Possible checks:
 - links,
 - metadata,
 - `data-wmd-source` references,
+- optional source ranges such as `data-wmd-range`,
+- content capabilities,
+- Markdown/front matter,
+- media references,
+- unsafe HTML, scripts, event attributes, styles, embeds, and links,
 - sitemap,
 - redirects,
 - accessibility smoke test,
 - mobile screenshot smoke test.
+
+### `website-md dev`
+
+Future command for previewing a site and inspecting source mappings.
+
+```bash
+npx website-md dev
+```
+
+Possible behavior:
+
+- start the site preview,
+- expose rendered `data-wmd-*` mappings,
+- help agents connect visible elements back to source files and ranges.
 
 ### `website-md extract <url>`
 

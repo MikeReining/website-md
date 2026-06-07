@@ -104,7 +104,13 @@ Recommended pattern:
 
 The important idea is not that every site must use blocks. The important idea is that a visible element can point back to a repo-relative source path. That makes click-to-edit and scoped AI changes practical without requiring a hosted website editor.
 
-Website.md should also be extensible through ordinary content primitives. Tables, lists, images, quotes, code examples, and similar elements should be portable Markdown content with source addressability where useful, not proprietary editor features.
+Website.md extensibility has three portable layers:
+
+- Markdown-native primitives such as tables, lists, images, quotes, and code.
+- Optional block front matter for declared layout, variant, and media knobs.
+- Optional declarative extensions and `media:key` references when a site declares support.
+
+The goal is rich content without proprietary editor features or arbitrary user HTML/JavaScript.
 
 ## What This Is Not
 

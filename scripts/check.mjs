@@ -56,6 +56,31 @@ async function localAssetExists(file, ref) {
   return absoluteExists(assetPath);
 }
 
+function getAttrValue(match) {
+  return match[3] ?? match[4] ?? match[5] ?? "";
+}
+
+function checkUnsafeHtml(html, label) {
+  for (const match of html.matchAll(/\s(href|src|action|formaction)\s*=\s*("([^"]*)"|'([^']*)'|([^\s>]+))/gi)) {
+    const name = match[1];
+    const value = getAttrValue(match).trim();
+    if (/^javascript:/i.test(value)) failures.push(`${label} has unsafe ${name} URL`);
+  }
+
+  for (const match of html.matchAll(/\son[a-z][\w:-]*\s*=/gi)) {
+    failures.push(`${label} has unsafe event attribute: ${match[0].trim().replace("=", "")}`);
+  }
+
+  for (const match of html.matchAll(/\s(style)\s*=\s*("([^"]*)"|'([^']*)'|([^\s>]+))/gi)) {
+    const value = getAttrValue(match);
+    if (/javascript:|expression\s*\(/i.test(value)) failures.push(`${label} has unsafe style attribute`);
+  }
+
+  if (/<iframe\b[^>]*\ssrcdoc\s*=/i.test(html)) {
+    failures.push(`${label} has unsafe iframe srcdoc attribute`);
+  }
+}
+
 for (const file of requiredFiles) {
   if (!(await exists(file))) failures.push(`Missing ${file}`);
 }
@@ -87,6 +112,7 @@ for (const file of htmlFiles) {
   if (!html.includes("<title>")) failures.push(`${label} missing <title>`);
   if (!html.includes('name="description"')) failures.push(`${label} missing meta description`);
   if (!html.includes('rel="canonical"')) failures.push(`${label} missing canonical link`);
+  checkUnsafeHtml(html, label);
 
   for (const match of html.matchAll(/<img\b[^>]*\ssrc="([^"]*)"/gi)) {
     const src = match[1];

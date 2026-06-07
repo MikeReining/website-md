@@ -70,6 +70,7 @@ Recommended homepage sections:
 - What changed: AI agents make the traditional editor optional for many sites.
 - How it works: instruction files, source files, preview, checks, deploy.
 - Addressable content primitives: Markdown-native tables, lists, images, quotes, and code as portable content.
+- Content contracts: capabilities, block front matter, media references, and source ranges.
 - File model.
 - 60-second demo.
 - Starter and validator.
@@ -117,9 +118,16 @@ scripts/
 
 Future implementation may move page content into Markdown or MDX, but the first dogfood site should stay static, inspectable, and easy to copy.
 
-## Content Primitives
+## Content Contracts
 
 The public site and spec should explain that rich content extensibility starts with Markdown-native primitives: paragraphs, headings, links, lists, tables, blockquotes, code, and images.
+
+Future agents should also explain:
+
+- Content capabilities: the primitives and safe declarative extensions a renderer supports.
+- Block front matter: optional `wmd` layout, variant, role, and media knobs.
+- Sub-source addressability: optional node ids and source ranges for cells, list items, images, and fields.
+- Media references: repo-relative paths and optional `media:key` entries backed by `media.json`.
 
 Keep this standard-focused. Tables, lists, images, quotes, and similar content should be ordinary portable content with optional source addressability, not proprietary editor features.
 
