@@ -52,6 +52,18 @@ for (const file of htmlFiles) {
   if (!html.includes("<title>")) failures.push(`${label} missing <title>`);
   if (!html.includes('name="description"')) failures.push(`${label} missing meta description`);
   if (!html.includes('rel="canonical"')) failures.push(`${label} missing canonical link`);
+
+  for (const match of html.matchAll(/<[a-z][^>]*\sdata-wmd-source="([^"]+)"/gi)) {
+    const source = match[1];
+    const sourcePath = source.split("#")[0];
+    if (!sourcePath) {
+      failures.push(`${label} has empty data-wmd-source path`);
+    } else if (sourcePath.startsWith("/") || sourcePath.startsWith("file:") || sourcePath.includes("://") || sourcePath.includes("..")) {
+      failures.push(`${label} has non-repo-relative data-wmd-source: ${source}`);
+    } else if (!(await exists(sourcePath))) {
+      failures.push(`${label} data-wmd-source missing file: ${source}`);
+    }
+  }
 }
 
 if (failures.length) {
