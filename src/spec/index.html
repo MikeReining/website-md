@@ -20,7 +20,7 @@
         </div>
       </nav>
     </header>
-    <main class="doc">
+    <main class="doc" data-wmd-source="src/spec/index.html#spec" data-wmd-role="spec">
       <h1>WEBSITE.md Spec</h1>
       <p>WEBSITE.md is a root-level Markdown file that gives AI agents durable instructions for operating a website.</p>
       <h2>Required sections</h2>
@@ -34,6 +34,12 @@
         <li>Preview And Validation</li>
         <li>Publishing</li>
       </ul>
+      <h2>Source addressability</h2>
+      <p>Rendered HTML may use <code>data-wmd-source</code>, <code>data-wmd-role</code>, and <code>data-wmd-field</code> to connect visible elements back to repo-relative source files.</p>
+      <pre><code>&lt;section data-wmd-source="content/pages/home.md#hero" data-wmd-role="hero"&gt;
+  &lt;h1 data-wmd-field="headline"&gt;A clear headline&lt;/h1&gt;
+&lt;/section&gt;</code></pre>
+      <p>This makes click-to-edit and scoped agent changes practical without requiring every site to be block-based.</p>
       <h2>Skeleton</h2>
       <pre><code># WEBSITE.md
 
