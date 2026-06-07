@@ -107,7 +107,7 @@ The important idea is not that every site must use blocks. The important idea is
 Website.md extensibility has three portable layers:
 
 - Markdown-native primitives such as tables, lists, images, quotes, and code.
-- Optional block front matter for declared layout, variant, and media knobs.
+- Optional flat `wmd_*` block front matter for declared layout, variant, and media knobs.
 - Optional declarative extensions and `media:key` references when a site declares support.
 
 The goal is rich content without proprietary editor features or arbitrary user HTML/JavaScript.

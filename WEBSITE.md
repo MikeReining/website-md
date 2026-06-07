@@ -125,7 +125,7 @@ The public site and spec should explain that rich content extensibility starts w
 Future agents should also explain:
 
 - Content capabilities: the primitives and safe declarative extensions a renderer supports.
-- Block front matter: optional `wmd` layout, variant, role, and media knobs.
+- Block front matter: optional flat `wmd_*` layout, variant, role, and media knobs.
 - Sub-source addressability: optional node ids and source ranges for cells, list items, images, and fields.
 - Media references: repo-relative paths and optional `media:key` entries backed by `media.json`.
 

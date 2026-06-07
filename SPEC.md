@@ -224,8 +224,8 @@ Example source:
 
 ```md
 ---
-id: comparison
-role: comparison
+wmd_id: comparison
+wmd_role: comparison
 ---
 
 ## Compare options
@@ -252,16 +252,17 @@ Rendered source mapping can stay lightweight:
 
 Markdown page and block files may use optional front matter to expose safe layout and rendering knobs without requiring agents to edit HTML or CSS.
 
+Portable Website.md front matter should use flat `wmd_*` keys. Flat keys are easier for agents to edit safely across Markdown processors than nested YAML objects.
+
 Recommended shape:
 
 ```md
 ---
-wmd:
-  id: comparison
-  role: comparison
-  layout: grid
-  variant: compact
-  columns: 3
+wmd_id: comparison
+wmd_role: comparison
+wmd_layout: grid
+wmd_variant: compact
+wmd_columns: 3
 ---
 
 ## Compare options
@@ -273,11 +274,14 @@ wmd:
 
 Rules:
 
-- `wmd.id` should be stable within the file when present.
-- `wmd.role` describes semantic purpose, such as `hero`, `pricing`, `comparison`, `gallery`, `contact`, or `footer`.
-- `wmd.layout`, `wmd.variant`, `columns`, `media`, and similar keys are renderer inputs, not raw CSS.
-- Unknown `wmd` keys should be ignored or rejected according to the site's declared capabilities.
+- `wmd_id` should be stable within the file when present.
+- `wmd_role` describes semantic purpose, such as `hero`, `pricing`, `comparison`, `gallery`, `contact`, or `footer`.
+- `wmd_layout`, `wmd_variant`, `wmd_columns`, `wmd_media`, and similar keys are renderer inputs, not raw CSS.
+- Values should be simple scalars when possible. Use arrays or objects only when the site declares support for them.
+- Unknown `wmd_*` keys should be ignored or rejected according to the site's declared capabilities.
+- Nested `wmd:` objects may be accepted as compatibility input, but agents should write the flat `wmd_*` form.
 - Front matter must stay parseable.
+- Agents should preserve unrelated front matter keys and avoid reformatting the whole block when making a small change.
 - Agents should change layout through declared front matter options, not by injecting HTML or CSS.
 
 ## Media References
@@ -457,7 +461,7 @@ MVP validator should check:
 - Declared content capabilities are valid when present.
 - Markdown content is parseable when present.
 - Front matter is parseable when present.
-- Optional `wmd` metadata uses valid declared keys.
+- Optional `wmd_*` metadata uses valid declared keys.
 - Tables have valid structure.
 - Repo-relative images resolve.
 - `media:key` references resolve when present.

@@ -58,7 +58,7 @@ scripts/
 
 Agents may add supported Markdown primitives: paragraphs, headings, links, ordered and unordered lists, tables, blockquotes, code blocks, inline code, and images.
 
-Agents may use declared front matter layout, variant, role, and media knobs when the renderer supports them.
+Agents may use declared flat `wmd_*` front matter layout, variant, role, and media knobs when the renderer supports them.
 
 Keep image paths and `media:key` references resolvable. Do not add arbitrary scripts, unsafe embeds, fake media keys, or unsupported extensions.
 

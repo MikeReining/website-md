@@ -75,7 +75,7 @@ Checks:
 - SEO/COPY/DESIGN references are coherent,
 - content capabilities are declared consistently when present,
 - Markdown and front matter are parseable,
-- optional `wmd` metadata uses supported keys,
+- optional `wmd_*` metadata uses supported keys,
 - media references and `media:key` values resolve.
 
 ### `website-md check`
