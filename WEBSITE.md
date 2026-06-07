@@ -116,6 +116,18 @@ scripts/
 
 Future implementation may move page content into Markdown or MDX, but the first dogfood site should stay static, inspectable, and easy to copy.
 
+## Source Addressability
+
+Use the optional `data-wmd-*` convention on major rendered sections when it helps an agent connect preview elements to source files.
+
+Recommended attributes:
+
+- `data-wmd-source`: repo-relative source file, optionally with a fragment.
+- `data-wmd-role`: semantic section role.
+- `data-wmd-field`: editable field inside the source.
+
+For this static site, source mappings should usually point to `src/index.html`, `src/spec/index.html`, or another route file. Do not use absolute local paths.
+
 ## Editing Rules
 
 AI may:
@@ -125,6 +137,7 @@ AI may:
 - Improve layout.
 - Add docs pages.
 - Add validation checks.
+- Add or improve `data-wmd-*` source mappings.
 - Update quick start commands.
 - Add practical migration guidance from Squarespace, Wix, Webflow, Carrd, or static sites.
 

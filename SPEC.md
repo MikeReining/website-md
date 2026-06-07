@@ -79,6 +79,7 @@ Explains how deployment works and what must happen before publish.
 
 ## Optional Sections
 
+- Source Addressability
 - Migration Notes
 - Redirect Policy
 - Forms And Integrations
@@ -89,6 +90,32 @@ Explains how deployment works and what must happen before publish.
 - Maintenance Schedule
 - Rollback Procedure
 - Agent Recipes
+
+## Source Addressability
+
+Source addressability is the optional convention that lets an agent connect a rendered element back to the file or fragment that produced it.
+
+Use `data-wmd-*` attributes in rendered HTML when a site can expose useful source mappings:
+
+```html
+<section data-wmd-source="content/pages/home.md#hero" data-wmd-role="hero">
+  <h1 data-wmd-field="headline">A clear headline</h1>
+  <p data-wmd-field="subhead">A concise supporting line.</p>
+</section>
+```
+
+Recommended attributes:
+
+- `data-wmd-source`: repo-relative source path, optionally with a fragment.
+- `data-wmd-role`: semantic role such as `hero`, `nav`, `testimonial`, `pricing`, or `footer`.
+- `data-wmd-field`: editable field within the source, such as `headline`, `body`, `image`, or `cta`.
+
+Rules:
+
+- Prefer repo-relative paths, never absolute local paths.
+- Do not expose secrets, private prompts, or user-only data in attributes.
+- Keep mappings stable enough that preview tooling can use them.
+- Treat addressability as a progressive enhancement; a valid `WEBSITE.md` site does not need to be block-based.
 
 ## Recommended Skeleton
 
@@ -132,6 +159,16 @@ Pages:
 Posts:
 Images:
 Metadata:
+
+## Source Addressability
+
+Use `data-wmd-source` on major rendered sections when the source file is clear.
+
+Example:
+
+```html
+<section data-wmd-source="content/pages/home.md#hero" data-wmd-role="hero">
+```
 
 ## Editing Rules
 
@@ -219,7 +256,7 @@ MVP validator should check:
 - Publishing policy is present.
 - Adjacent files are referenced if they exist.
 
-Future validator can parse structured front matter.
+Future validator can parse structured front matter and verify any `data-wmd-source` references found in rendered HTML.
 
 ## Design Principle
 

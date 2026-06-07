@@ -87,6 +87,7 @@ Possible checks:
 - build,
 - links,
 - metadata,
+- `data-wmd-source` references,
 - sitemap,
 - redirects,
 - accessibility smoke test,

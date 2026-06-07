@@ -54,6 +54,16 @@ scripts/
   check.mjs
 ```
 
+## Source Addressability
+
+Use `data-wmd-source` on major rendered sections when the source file is clear. Values should be repo-relative paths, optionally with fragments.
+
+Example:
+
+```html
+<section data-wmd-source="src/index.html#hero" data-wmd-role="hero">
+```
+
 ## Editing Rules
 
 AI may:
@@ -63,6 +73,7 @@ AI may:
 - Improve layout.
 - Add pages.
 - Improve metadata.
+- Add or improve `data-wmd-*` source mappings.
 
 AI must ask before:
 

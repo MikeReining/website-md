@@ -31,6 +31,16 @@ Pages: `content/pages/`
 Images: `public/` or `content/assets/`  
 Metadata: page front matter or site config.
 
+## Source Addressability
+
+Use `data-wmd-source` on major rendered sections when the source file is clear. Values should be repo-relative paths, optionally with fragments.
+
+Example:
+
+```html
+<section data-wmd-source="content/pages/home.md#hero" data-wmd-role="hero">
+```
+
 ## Editing Rules
 
 AI may:
@@ -40,6 +50,7 @@ AI may:
 - Improve layout.
 - Add pages.
 - Improve metadata.
+- Add or improve `data-wmd-*` source mappings.
 
 AI must ask before:
 
@@ -61,4 +72,3 @@ npm run check
 
 Target: Vercel, Netlify, Cloudflare Pages, or GitHub Pages.  
 Publish only after build and checks pass.
-

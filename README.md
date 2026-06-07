@@ -90,6 +90,20 @@ Optional generated/public files:
 - `robots.txt`: crawler policy.
 - `public/_redirects` or host-specific redirect config.
 
+## Source Addressability
+
+A Website.md-compatible site may expose source mappings in rendered HTML so agents and preview tools can connect what the user sees to the file that controls it.
+
+Recommended pattern:
+
+```html
+<section data-wmd-source="content/pages/home.md#hero" data-wmd-role="hero">
+  <h1 data-wmd-field="headline">A clear headline</h1>
+</section>
+```
+
+The important idea is not that every site must use blocks. The important idea is that a visible element can point back to a repo-relative source path. That makes click-to-edit and scoped AI changes practical without requiring a hosted website editor.
+
 ## What This Is Not
 
 This is not a hosted website builder.

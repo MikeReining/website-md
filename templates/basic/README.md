@@ -8,6 +8,8 @@ npm create website-md@latest my-site
 
 It should be a simple static-first website that an AI coding agent can modify quickly.
 
+Rendered sections should use `data-wmd-source` when practical, so preview tools can connect visible elements back to repo-relative source files.
+
 ## Starter Contents
 
 ```txt
@@ -35,4 +37,3 @@ npm run check
 ```txt
 Use WEBSITE.md, DESIGN.md, COPY.md, and SEO.md to customize this site for my business. Preview locally and run checks before you finish.
 ```
-
