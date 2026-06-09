@@ -22,8 +22,13 @@
     </header>
     <main class="doc" data-wmd-source="src/spec/index.html#spec" data-wmd-role="spec">
       <h1>WEBSITE.md Spec</h1>
-      <p>WEBSITE.md is a root-level Markdown file that gives AI agents durable instructions for operating a website.</p>
-      <h2>Required sections</h2>
+      <p>WEBSITE.md is a root-level Markdown file that gives AI agents durable instructions for operating a website. Simple at the door, deep by design.</p>
+
+      <h2>Required file</h2>
+      <p>The only required root instruction file is <code>WEBSITE.md</code>. Companion files such as <code>AGENTS.md</code>, <code>DESIGN.md</code>, <code>COPY.md</code>, <code>SEO.md</code>, and <code>media.json</code> are optional.</p>
+      <p>AGENTS.md tells agents how to work in your repo. WEBSITE.md tells agents how to operate your website.</p>
+
+      <h2>Core sections (~5 minutes)</h2>
       <ul>
         <li>Site Identity</li>
         <li>Primary User Goals</li>
@@ -34,31 +39,28 @@
         <li>Preview And Validation</li>
         <li>Publishing</li>
       </ul>
-      <h2>Source addressability</h2>
-      <p>Rendered HTML may use <code>data-wmd-source</code>, <code>data-wmd-role</code>, and <code>data-wmd-field</code> to connect visible elements back to repo-relative source files.</p>
-      <pre><code>&lt;section data-wmd-source="content/pages/home.md#hero" data-wmd-role="hero"&gt;
-  &lt;h1 data-wmd-field="headline"&gt;A clear headline&lt;/h1&gt;
-&lt;/section&gt;</code></pre>
-      <p>This makes click-to-edit and scoped agent changes practical without requiring every site to be block-based.</p>
-      <h2>Skeleton</h2>
-      <pre><code># WEBSITE.md
 
-## Site Identity
+      <h2>Conformance levels</h2>
+      <pre><code>Level 0 — Declared: root WEBSITE.md exists
+Level 1 — Checked: npx website-md check passes
+Level 2 — Addressable: data-wmd-* source mappings in output
+Level 3 — Operable: capabilities, front matter, media contracts
+Level 4 — Optimizable: analytics and experiment contracts</code></pre>
 
-Name:
-Primary domain:
-Owner:
-Site type:
-Audience:
-Primary job:
+      <h2>Optional advanced capabilities</h2>
+      <ul>
+        <li>Source addressability (<code>data-wmd-source</code>)</li>
+        <li>Content capabilities and block front matter (<code>wmd_*</code>)</li>
+        <li>Media references and <code>media.json</code></li>
+        <li>Analytics contracts</li>
+        <li>A/B testing and experiments (future-facing)</li>
+        <li>Agent operations and import/export helpers</li>
+      </ul>
 
-## Preview And Validation
+      <h2>Validate</h2>
+      <pre><code>npx website-md check</code></pre>
 
-npm install
-npm run dev
-npm run build
-npm run check</code></pre>
-      <p>The full draft lives in the repo as SPEC.md. Keep the first spec small enough that an agent can read it and act.</p>
+      <p>The full draft lives in the repo as <a href="https://github.com/MikeReining/website-md/blob/main/SPEC.md">SPEC.md</a>. Beginners can adopt with only the core sections; advanced tools can rely on the same public standard.</p>
     </main>
   </body>
 </html>

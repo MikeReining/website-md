@@ -1,5 +1,9 @@
 # Agent Instructions
 
+AGENTS.md tells agents how to work in your repo. WEBSITE.md tells agents how to operate your website.
+
+Site instructions: see WEBSITE.md.
+
 This folder is a concept handoff for Website.md. Keep edits focused, practical, and easy for another developer to copy into a new repo.
 
 ## Project Intent
@@ -26,7 +30,7 @@ If implementing the repo:
 - Use a simple static-first stack.
 - Favor Markdown content.
 - Make `npm create website-md@latest my-site` the ideal install experience.
-- Add `npx website-md lint` for validation.
+- Add `npx website-md check` for validation.
 - Dogfood the convention on `websitemd.org`.
 
 ## Verification

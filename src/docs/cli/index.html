@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Website.md CLI</title>
-    <meta name="description" content="The proposed Website.md command surface for creating, linting, checking, and exporting AI-operable website context.">
+    <meta name="description" content="Website.md commands for creating and checking AI-operable websites.">
     <link rel="canonical" href="https://websitemd.org/docs/cli/">
     <link rel="stylesheet" href="/styles.css">
   </head>
@@ -22,14 +22,30 @@
     </header>
     <main class="doc">
       <h1>CLI</h1>
-      <p>The first command surface should stay small: create a starter, then add lint as the second package.</p>
+
+      <h2>Create a starter</h2>
       <pre><code>npm create website-md@latest my-site</code></pre>
-      <p>The create command works after the npm package create-website-md is published. npm create website-md resolves to create-website-md.</p>
+      <p>Requires <code>create-website-md</code> on npm. The generated project includes <code>WEBSITE.md</code> and optional companion files.</p>
+
+      <h2>Check any repo</h2>
+      <pre><code>npx website-md check
+npx website-md check ./my-site
+npx website-md check --json</code></pre>
+      <p>The portable checker validates <code>WEBSITE.md</code>, required sections, referenced files, scripts, and reports a conformance level. Exit code <code>0</code> on pass, <code>1</code> on fail.</p>
+
+      <h2>Project scripts</h2>
+      <pre><code>npm run dev
+npm run build
+npm run check</code></pre>
+      <p>Starter projects and websitemd.org include local <code>check</code> scripts with site-specific HTML checks on top of the portable rules.</p>
+
+      <h2>Publish packages (maintainers)</h2>
+      <pre><code>npm login
+npm run publish:packages</code></pre>
+      <p>From the websitemd.org repo root. Publishes <code>create-website-md</code> and <code>website-md</code>, then runs smoke tests.</p>
+
       <h2>Later</h2>
-      <pre><code>npx website-md lint
-website-md init
-website-md check
-website-md doctor
+      <pre><code>website-md init
 website-md export-llms
 website-md extract &lt;url&gt;</code></pre>
     </main>

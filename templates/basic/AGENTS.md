@@ -1,10 +1,11 @@
 # Agent Instructions
 
-This is a Website.md starter site.
+AGENTS.md tells agents how to work in your repo. WEBSITE.md tells agents how to operate your website.
 
-Before editing, read:
+Site instructions: see WEBSITE.md.
 
-- `WEBSITE.md`
+This is a Website.md starter site. Read `WEBSITE.md` first. Use optional companion files when present:
+
 - `DESIGN.md`
 - `COPY.md`
 - `SEO.md`
@@ -15,4 +16,3 @@ Run checks before finishing:
 npm run build
 npm run check
 ```
-

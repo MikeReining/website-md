@@ -33,8 +33,9 @@ Use the WordPress `.org` mental model when helpful: open standard first, ecosyst
 - `/`: landing page and quick start.
 - `/spec`: readable `WEBSITE.md` specification.
 - `/examples`: example websites and instruction files.
-- `/examples/bitsboard`: live Bitsboard case study.
-- `/examples/kansobooks`: live KansoBooks case study.
+- `/examples/simple-consultant`: real inspectable Rivera Consulting example.
+- `/examples/bitsboard`: illustrative Bitsboard instruction pattern.
+- `/examples/kansobooks`: illustrative KansoBooks instruction pattern.
 - `/guides/replace-squarespace`: guide for replacing a hosted website builder with an AI-operated site.
 - `/guides/create-site`: guide for creating a new site with an AI agent.
 - `/docs/cli`: command reference.
@@ -54,12 +55,11 @@ The first viewport should include:
 - visible file model:
 
 ```txt
-README.md    = explain the project to humans
-AGENTS.md    = explain the repo to AI agents
-DESIGN.md    = explain the visual system to AI agents
-COPY.md      = explain the voice to AI agents
-SEO.md       = explain discovery rules to AI agents
-WEBSITE.md   = explain the website to AI agents
+WEBSITE.md   = required — operate the website
+AGENTS.md    = optional — work in the repo
+DESIGN.md    = optional — visual system
+COPY.md      = optional — voice and messaging
+SEO.md       = optional — discovery rules
 ```
 
 The page should show, not merely claim, that this website is operated by its own `WEBSITE.md`.
@@ -86,6 +86,7 @@ Initial canonical URLs:
 - `/`
 - `/spec`
 - `/examples`
+- `/examples/simple-consultant`
 - `/examples/bitsboard`
 - `/examples/kansobooks`
 - `/guides/replace-squarespace`

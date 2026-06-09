@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Website.md Examples</title>
-    <meta name="description" content="Real and starter examples of Website.md sites operated by AI agents.">
+    <meta name="description" content="Real and illustrative examples of Website.md sites operated by AI agents.">
     <link rel="canonical" href="https://websitemd.org/examples/">
     <link rel="stylesheet" href="/styles.css">
   </head>
@@ -24,16 +24,50 @@
 
     <main>
       <section class="doc examples-hero">
-        <p class="eyebrow">Real sites, starter sites, workflows</p>
+        <p class="eyebrow">Inspectable examples and patterns</p>
         <h1>Examples should prove the convention.</h1>
-        <p>Website.md examples are not just screenshots. Each example should show the site, the instruction files, and the agent workflow that keeps it operable.</p>
+        <p>Website.md examples are not screenshots. A real example links to instruction files, source, validation output, and deploy steps. Illustrative examples show patterns without claiming fake adoption.</p>
       </section>
 
       <section class="band wash">
         <div class="inner">
           <div class="section-heading">
-            <h2>Live Examples</h2>
-            <p>Real websites with enough complexity to make the instruction layer matter.</p>
+            <h2>Real Example</h2>
+            <p>Inspectable artifacts in the public repo. Passes <code>npx website-md check</code>.</p>
+          </div>
+          <div class="example-grid live-grid">
+            <article class="example-card featured">
+              <div class="site-preview kanso-preview" aria-hidden="true">
+                <div class="preview-bar"><span></span><span></span><span></span></div>
+                <div class="preview-body">
+                  <strong>Rivera Consulting</strong>
+                  <span>Hero · Services · Proof · Contact</span>
+                </div>
+              </div>
+              <div class="example-content">
+                <p class="eyebrow">Consultant website</p>
+                <h3>Rivera Consulting</h3>
+                <p>A one-page consultant site built from the starter and customized by an AI agent. Includes real <code>WEBSITE.md</code>, source files, edit summary, and deploy instructions.</p>
+                <div class="tag-row">
+                  <span>WEBSITE.md</span>
+                  <span>Validation</span>
+                  <span>Deploy ready</span>
+                </div>
+                <div class="inline-actions">
+                  <a class="button primary" href="/examples/simple-consultant/">View case study</a>
+                  <a class="button secondary" href="https://github.com/MikeReining/website-md/tree/main/examples/simple-consultant">Repo folder</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="inner">
+          <div class="section-heading">
+            <h2>Illustrative Patterns</h2>
+            <p>Instruction-layer patterns for complex live sites. These are not claimed Website.md adoptions unless a public <code>WEBSITE.md</code> repo is linked.</p>
           </div>
           <div class="example-grid live-grid">
             <article class="example-card featured">
@@ -45,17 +79,11 @@
                 </div>
               </div>
               <div class="example-content">
-                <p class="eyebrow">Education product website</p>
+                <p class="eyebrow">Illustrative pattern · education product</p>
                 <h3>Bitsboard</h3>
-                <p>A live learning app site with games, catalog, help, accessibility, App Store CTAs, and a publishing rhythm for educational content.</p>
-                <div class="tag-row">
-                  <span>Catalog</span>
-                  <span>Blog</span>
-                  <span>Accessibility</span>
-                  <span>App Store</span>
-                </div>
+                <p>Shows how a content-heavy education product site could layer <code>WEBSITE.md</code> with catalog, blog, and accessibility instructions. The live site exists; this page describes a pattern, not a verified migration.</p>
                 <div class="inline-actions">
-                  <a class="button primary" href="/examples/bitsboard/">View case study</a>
+                  <a class="button primary" href="/examples/bitsboard/">View pattern</a>
                   <a class="button secondary" href="https://bitsboard.com/">Live site</a>
                 </div>
               </div>
@@ -70,17 +98,11 @@
                 </div>
               </div>
               <div class="example-content">
-                <p class="eyebrow">Product launch website</p>
+                <p class="eyebrow">Illustrative pattern · product launch</p>
                 <h3>KansoBooks</h3>
-                <p>A live product site for accounting software with high-trust copy, an interactive demo, waitlist CTA, pricing, and QuickBooks migration positioning.</p>
-                <div class="tag-row">
-                  <span>Demo</span>
-                  <span>Pricing</span>
-                  <span>Trust</span>
-                  <span>Migration</span>
-                </div>
+                <p>Shows how a trust-heavy product launch site could split demo, pricing, and migration rules across companion instruction files. The live site exists; this page describes a pattern, not a verified migration.</p>
                 <div class="inline-actions">
-                  <a class="button primary" href="/examples/kansobooks/">View case study</a>
+                  <a class="button primary" href="/examples/kansobooks/">View pattern</a>
                   <a class="button secondary" href="https://www.kansobooks.com/">Live site</a>
                 </div>
               </div>
@@ -89,16 +111,16 @@
         </div>
       </section>
 
-      <section class="band">
+      <section class="band wash">
         <div class="inner">
           <div class="section-heading">
-            <h2>Starter Examples</h2>
+            <h2>Starter Patterns</h2>
             <p>Small sites generated from the starter and customized by an AI agent.</p>
           </div>
           <div class="grid">
             <article class="card">
               <h3>Simple consultant</h3>
-              <p>A one-page expert services site with offer, proof, services, and contact CTA.</p>
+              <p>See the real Rivera Consulting example above.</p>
             </article>
             <article class="card">
               <h3>Local service</h3>
@@ -112,7 +134,7 @@
         </div>
       </section>
 
-      <section class="band wash">
+      <section class="band">
         <div class="inner">
           <div class="section-heading">
             <h2>Workflow Examples</h2>
@@ -121,15 +143,15 @@
           <div class="workflow-list">
             <article>
               <h3>Publish a blog post</h3>
-              <p>Agent reads `BLOG.md`, `COPY.md`, and `SEO.md`, writes the post, adds links, checks metadata, and reports the URL.</p>
+              <p>Agent reads site instructions and optional <code>COPY.md</code> / <code>SEO.md</code>, writes the post, adds links, checks metadata, and reports the URL.</p>
             </article>
             <article>
               <h3>Add a landing page</h3>
-              <p>Agent creates a route, follows canonical URL rules, matches the design system, and updates navigation only when appropriate.</p>
+              <p>Agent creates a route, follows canonical URL rules in <code>WEBSITE.md</code>, matches the design system, and updates navigation only when appropriate.</p>
             </article>
             <article>
               <h3>Deploy to Vercel</h3>
-              <p>Agent runs checks, confirms `dist/`, gives the import settings, and helps attach the domain after the first deploy.</p>
+              <p>Agent runs checks, confirms <code>dist/</code>, gives the import settings, and helps attach the domain after the first deploy.</p>
             </article>
           </div>
         </div>

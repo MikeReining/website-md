@@ -2,18 +2,18 @@
 
 ## Site Identity
 
-Name: New Website.md Site  
-Primary domain: example.com (replace before first deploy)  
-Owner: site owner name (replace before first deploy)  
-Site type: simple business website  
-Audience: prospective customers  
-Primary job: explain the offer clearly and help visitors take the next step.
+Name: Rivera Consulting  
+Primary domain: rivera-consulting.example (replace before deploy)  
+Owner: Alex Rivera  
+Site type: simple consultant website  
+Audience: small business owners evaluating operations help  
+Primary job: explain the offer, show proof, and drive contact requests.
 
 ## Primary User Goals
 
-- Understand what this business does.
-- Decide whether it is relevant.
-- Contact the owner or take the primary action.
+- Understand what Rivera Consulting does.
+- See relevant proof and services.
+- Contact Alex for a discovery call.
 
 ## Site Structure
 
@@ -23,8 +23,6 @@ Public routes agents should know:
 - `/llms.txt`: LLM context summary (`src/llms.txt`).
 - `/sitemap.xml`: crawlable URL inventory (`src/sitemap.xml`).
 - `/robots.txt`: crawler policy (`src/robots.txt`).
-
-Add new pages under `src/` and list them here before publishing.
 
 ## Canonical URLs
 
@@ -39,8 +37,8 @@ Important URLs:
 Current site files:
 
 ```txt
-AGENTS.md
 WEBSITE.md
+AGENTS.md
 DESIGN.md
 COPY.md
 SEO.md
@@ -62,13 +60,11 @@ scripts/
 
 Agents may add supported Markdown primitives: paragraphs, headings, links, ordered and unordered lists, tables, blockquotes, code blocks, inline code, and images.
 
-Agents may use declared flat `wmd_*` front matter layout, variant, role, and media knobs when the renderer supports them.
-
-Keep image paths and `media:key` references resolvable. Do not add arbitrary scripts, unsafe embeds, fake media keys, or unsupported extensions.
+Keep image paths resolvable. Do not add arbitrary scripts or unsafe embeds.
 
 ## Source Addressability
 
-Use `data-wmd-source` on major rendered sections when the source file is clear. Values should be repo-relative paths, optionally with fragments.
+Use `data-wmd-source` on major rendered sections when the source file is clear.
 
 Example:
 
@@ -83,7 +79,6 @@ AI may:
 - Update copy.
 - Add sections.
 - Improve layout.
-- Add pages.
 - Improve metadata.
 - Add or improve `data-wmd-*` source mappings.
 
@@ -108,13 +103,17 @@ npm run build
 npm run check
 ```
 
+Also run the portable checker from any machine:
+
+```bash
+npx website-md check
+```
+
 Local preview:
 
 ```txt
 http://localhost:4177
 ```
-
-Keep the dev-server terminal open while previewing.
 
 ## Publishing
 

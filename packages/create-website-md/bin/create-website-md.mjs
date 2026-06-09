@@ -67,7 +67,7 @@ console.log(`Created ${projectName}`);
 console.log("");
 console.log("AI agent next steps:");
 console.log(`  1. cd ${projectName}`);
-console.log("  2. Read AGENTS.md, WEBSITE.md, DESIGN.md, COPY.md, SEO.md, and HOSTING.md");
+console.log("  2. Read WEBSITE.md first, then optional companion files as needed");
 console.log("  3. Run npm run dev");
 console.log("  4. Give the user the local preview URL");
 console.log("  5. Customize the site, then run npm run check and npm run build");

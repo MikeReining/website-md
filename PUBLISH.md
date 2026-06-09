@@ -1,82 +1,43 @@
 # Publish npm Packages
 
-## Command Goal
+## One command
 
-This command:
-
-```bash
-npm create website-md@latest my-site
-```
-
-works only after the npm package `create-website-md` is published.
-
-`npm create website-md@latest` resolves to:
-
-```txt
-create-website-md@latest
-```
-
-The GitHub repo can host the source, but npm is what makes the command executable for users.
-
-## Package
-
-Current create package:
-
-```txt
-packages/create-website-md
-```
-
-Package name:
-
-```txt
-create-website-md
-```
-
-Later CLI package:
-
-```txt
-packages/website-md
-```
-
-Package name:
-
-```txt
-website-md
-```
-
-That second package is what will make this work:
+From the repo root, after `npm login` once:
 
 ```bash
-npx website-md lint
+npm run publish:packages
 ```
 
-## Publish Order
+Dry run (pack only, no publish):
 
-1. Create the GitHub organization or repo.
-2. Create or choose the npm publisher account.
-3. Confirm the npm package name is available.
-4. Publish `create-website-md`.
-5. Smoke test from a clean directory.
-6. Deploy `websitemd.org`.
+```bash
+npm run publish:packages:dry-run
+```
 
-Do not launch the homepage publicly until the npm create command works.
+Skip post-publish smoke tests:
 
-## Publish Commands
+```bash
+node scripts/publish-packages.mjs --skip-smoke
+```
 
-From `packages/create-website-md`:
+This publishes:
+
+- `create-website-md` — powers `npm create website-md@latest my-site`
+- `website-md` — powers `npx website-md check`
+
+## Prerequisites
 
 ```bash
 npm login
-npm publish --access public
 ```
 
-If npm cache permissions fail locally, use a temp cache:
+If npm cache permissions fail locally:
 
 ```bash
-npm_config_cache=/private/tmp/npm-cache npm publish --access public
+npm_config_cache=/private/tmp/npm-cache npm run publish:packages
 ```
 
-## Smoke Test
+## Smoke test (manual)
 
 From a clean directory:
 
@@ -88,28 +49,39 @@ npm run build
 npm run dev
 ```
 
-Open:
-
-```txt
-http://localhost:4177
-```
-
-## Local Package Test
-
-Before publishing:
+Portable checker:
 
 ```bash
-cd packages/create-website-md
-npm_config_cache=/private/tmp/npm-cache npm pack --pack-destination /private/tmp
+npx website-md check
 ```
 
-Then from a clean temp directory:
+## Publish the standalone example repo
+
+After `gh auth login`:
 
 ```bash
-npm_config_cache=/private/tmp/npm-cache npm exec --package /private/tmp/create-website-md-0.1.0.tgz -- create-website-md my-site
-cd my-site
-npm run check
-npm run build
+npm run publish:example
 ```
 
-Note: `npm create` does not accept a local tarball path as an initializer. Use `npm exec --package` for local tarball testing.
+Optional custom repo name:
+
+```bash
+node scripts/publish-example.mjs my-consultant-example
+```
+
+Dry run:
+
+```bash
+npm run publish:example:dry-run
+```
+
+Then deploy `dist/` (Vercel recommended) and add the live URL to `src/examples/simple-consultant/index.html`.
+
+## Publish order
+
+1. Merge changes to `main`.
+2. Bump versions in `packages/create-website-md/package.json` and `packages/website-md/package.json` when needed.
+3. Run `npm run publish:packages`.
+4. Deploy `websitemd.org`.
+
+Do not launch homepage changes that depend on new package versions until publish succeeds.

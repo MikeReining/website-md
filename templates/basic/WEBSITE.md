@@ -3,8 +3,8 @@
 ## Site Identity
 
 Name: New Website.md Site  
-Primary domain: TBD  
-Owner: TBD  
+Primary domain: example.com (replace before first deploy)  
+Owner: site owner name (replace before first deploy)  
 Site type: simple business website  
 Audience: prospective customers  
 Primary job: explain the offer clearly and help visitors take the next step.
@@ -17,9 +17,14 @@ Primary job: explain the offer clearly and help visitors take the next step.
 
 ## Site Structure
 
+Public routes agents should know:
+
 - `/`: home page.
-- `/contact`: contact page, optional.
-- `/blog`: articles, optional.
+- `/llms.txt`: LLM context summary when published.
+- `/sitemap.xml`: crawlable URL inventory when published.
+- `/robots.txt`: crawler policy when published.
+
+Optional pages such as `/contact` or `/blog` should be listed here before publishing.
 
 ## Canonical URLs
 

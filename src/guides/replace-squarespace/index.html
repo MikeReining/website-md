@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Replace a Hosted Website Builder</title>
-    <meta name="description" content="Plan a careful migration from Squarespace, Wix, Webflow, Carrd, or another hosted builder to an AI-operated website.">
+    <meta name="description" content="A concrete walkthrough for migrating from Squarespace, Wix, Webflow, Carrd, or another hosted builder to an AI-operated Website.md site.">
     <link rel="canonical" href="https://websitemd.org/guides/replace-squarespace/">
     <link rel="stylesheet" href="/styles.css">
   </head>
@@ -22,15 +22,57 @@
     </header>
     <main class="doc">
       <h1>Replace a hosted builder</h1>
-      <p>Website.md is useful when the site is simple enough to become source files, Markdown content, local previews, and a deploy pipeline.</p>
-      <ol>
-        <li>Inventory current URLs.</li>
-        <li>Draft WEBSITE.md, DESIGN.md, COPY.md, and SEO.md.</li>
-        <li>Rebuild the site static-first.</li>
-        <li>Preserve URLs or create redirects.</li>
-        <li>Run build, link, metadata, and mobile checks.</li>
-      </ol>
-      <p>Do not migrate forms, analytics, domains, or payments without explicit approval.</p>
+      <p>Website.md is useful when the site is simple enough to become source files, local previews, checks, and a deploy pipeline. URL preservation is the main reason to use it for a migration: you keep search equity, bookmarks, and inbound links instead of silently breaking paths.</p>
+
+      <h2>1. Export or copy existing content</h2>
+      <p>Inventory every public URL from the current builder: home, about, services, blog posts, legal pages, and campaign landers. Export text, images, and metadata where the platform allows it. Save a spreadsheet of old URL → page title → primary content file.</p>
+
+      <h2>2. Create a Website.md starter</h2>
+      <pre><code>npm create website-md@latest my-site
+cd my-site
+npm run dev</code></pre>
+      <p>Open the folder in your AI agent. You only need <code>WEBSITE.md</code> to start; add optional companion files later if the site grows.</p>
+
+      <h2>3. Map old URLs in WEBSITE.md</h2>
+      <p>In <code>## Site Structure</code> and <code>## Canonical URLs</code>, list every URL that must keep working. Example:</p>
+      <pre><code>## Canonical URLs
+
+Preserve these public URLs exactly:
+
+- /
+- /about
+- /services
+- /blog/welcome-post</code></pre>
+      <p>Ask the agent to rebuild each page as static HTML or Markdown under <code>src/</code> while matching the old slug.</p>
+
+      <h2>4. Preserve canonical URLs</h2>
+      <p>Each page needs a matching <code>&lt;link rel="canonical"&gt;</code> and stable path. Do not rename slugs for style points during migration. If a URL must change, treat it as a redirect task—not a silent rename.</p>
+
+      <h2>5. Add redirects where needed</h2>
+      <p>When a path cannot be recreated exactly, add host-specific redirects:</p>
+      <ul>
+        <li>Vercel: <code>vercel.json</code> redirects</li>
+        <li>Netlify: <code>public/_redirects</code></li>
+        <li>Cloudflare Pages: <code>_redirects</code></li>
+      </ul>
+      <p>Document every redirect in <code>WEBSITE.md</code> under Canonical URLs or Redirect Policy.</p>
+
+      <h2>6. Run the checker</h2>
+      <pre><code>npm run build
+npm run check
+npx website-md check</code></pre>
+      <p>Fix missing sections, broken file references, and script gaps before deploy.</p>
+
+      <h2>7. Deploy</h2>
+      <p>Deploy <code>dist/</code> to Vercel, Netlify, Cloudflare Pages, or GitHub Pages. Verify every preserved URL returns 200. Spot-check metadata and mobile layout on the top traffic pages.</p>
+
+      <h2>8. Point the domain</h2>
+      <p>Lower DNS TTL a day before cutover. Attach the custom domain in the host dashboard. Keep the old builder live until redirects and the homepage are verified on production.</p>
+
+      <h2>Ask before changing</h2>
+      <p>Do not migrate forms, analytics, domains, checkout, or payment flows without explicit approval. Those systems often carry compliance and billing risk.</p>
+
+      <p><a href="/guides/create-site/">Create a new site guide</a> · <a href="/examples/simple-consultant/">Real example</a></p>
     </main>
   </body>
 </html>

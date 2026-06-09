@@ -65,21 +65,26 @@ The standard itself should stay free.
 
 ## File Model
 
-Minimal root files:
+The only required root instruction file is `WEBSITE.md`.
+
+AGENTS.md tells agents how to work in your repo. WEBSITE.md tells agents how to operate your website.
+
+Small sites can keep design, copy, SEO, and publishing rules inside `WEBSITE.md`. Larger sites can split those concerns into optional companion files:
 
 ```txt
-AGENTS.md
-WEBSITE.md
-DESIGN.md
-COPY.md
-SEO.md
+WEBSITE.md   # required — website operating layer
+AGENTS.md    # optional — repo workflow
+DESIGN.md    # optional — visual system
+COPY.md      # optional — voice and messaging
+SEO.md       # optional — discovery rules
+media.json   # optional — stable media keys
 ```
 
 Roles:
 
-- `AGENTS.md`: how the AI should behave in this repo.
 - `WEBSITE.md`: what the website is, how it is structured, and how to change/publish it.
-- `DESIGN.md`: visual identity, tokens, components, and taste. Compatible in spirit with Google's `DESIGN.md` format.
+- `AGENTS.md`: how the AI should behave in this repo (adjacent convention, not required by Website.md).
+- `DESIGN.md`: visual identity, tokens, components, and taste.
 - `COPY.md`: voice, writing rules, messaging, conversion style.
 - `SEO.md`: URL policy, metadata, structured data, internal linking, search and AI discovery.
 
@@ -139,7 +144,7 @@ This requires the npm package `create-website-md` to be published. `npm create w
 Open the folder in an AI coding agent and say:
 
 ```txt
-Use WEBSITE.md, DESIGN.md, COPY.md, and SEO.md to build me a simple website for my business. Preview it locally, fix layout issues, and prepare it for Vercel.
+Use WEBSITE.md to build me a simple website for my business. Use companion files if present. Preview it locally, fix layout issues, and prepare it for Vercel.
 ```
 
 Within minutes, the user has:
@@ -151,7 +156,7 @@ Within minutes, the user has:
 
 The site should make this feel obvious:
 
-> All you need to launch a simple website is a folder, `WEBSITE.md`, and an AI agent that can edit, preview, validate, and publish.
+> All you need to launch a simple website is a folder, `WEBSITE.md`, and an AI agent that can edit, preview, validate, and publish. Companion files are optional.
 
 ## 60-Second Demo
 
@@ -219,10 +224,10 @@ MVP commands:
 npm create website-md@latest my-site
 ```
 
-Second package:
+Portable checker:
 
 ```bash
-npx website-md lint
+npx website-md check
 ```
 
 ## Why A Website Too

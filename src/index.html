@@ -57,12 +57,12 @@
             <p>Website builders wrapped sites in hosted editors. AI agents change the tradeoff. For many simple sites, the better interface is a local agent that can read instructions, edit files, preview changes, run checks, and prepare a deploy.</p>
             <p class="proof">This site is operated by its own WEBSITE.md.</p>
           </div>
-          <pre class="file-model"><code>README.md    = explain the project to humans
-AGENTS.md    = explain the repo to AI agents
-DESIGN.md    = explain the visual system to AI agents
-COPY.md      = explain the voice to AI agents
-SEO.md       = explain discovery rules to AI agents
-WEBSITE.md   = explain the website to AI agents</code></pre>
+          <pre class="file-model"><code>WEBSITE.md   = required — operate the website
+AGENTS.md    = optional — work in the repo
+DESIGN.md    = optional — visual system
+COPY.md      = optional — voice and messaging
+SEO.md       = optional — discovery rules</code></pre>
+          <p class="proof">AGENTS.md tells agents how to work in your repo. WEBSITE.md tells agents how to operate your website.</p>
         </div>
       </section>
 
@@ -72,7 +72,7 @@ WEBSITE.md   = explain the website to AI agents</code></pre>
           <div class="grid">
             <article class="card">
               <h3>1. Add instructions</h3>
-              <p>Put WEBSITE.md beside AGENTS.md, DESIGN.md, COPY.md, and SEO.md.</p>
+              <p>Add WEBSITE.md at the project root. Split design, copy, and SEO into companion files only when the site grows.</p>
             </article>
             <article class="card">
               <h3>2. Ask your agent</h3>
@@ -132,28 +132,20 @@ WEBSITE.md   = explain the website to AI agents</code></pre>
       for (const button of document.querySelectorAll("[data-copy]")) {
         button.addEventListener("click", async () => {
           const text = button.dataset.copy;
-          const status = button.querySelector(".copy-status");
+          const label = button.querySelector(".copy-label");
+          if (!text || !label || !navigator.clipboard?.writeText) return;
 
           try {
             await navigator.clipboard.writeText(text);
-          } catch {
-            const area = document.createElement("textarea");
-            area.value = text;
-            area.setAttribute("readonly", "");
-            area.style.position = "fixed";
-            area.style.opacity = "0";
-            document.body.append(area);
-            area.select();
-            document.execCommand("copy");
-            area.remove();
+            label.textContent = "Copied";
+            button.classList.add("copied");
+            window.setTimeout(() => {
+              label.textContent = "Copy";
+              button.classList.remove("copied");
+            }, 1800);
+          } catch (error) {
+            console.error("Copy failed:", error);
           }
-
-          status.querySelector(".copy-label").textContent = "Copied";
-          button.classList.add("copied");
-          window.setTimeout(() => {
-            status.querySelector(".copy-label").textContent = "Copy";
-            button.classList.remove("copied");
-          }, 1800);
         });
       }
     </script>

@@ -8,6 +8,11 @@
     "dev": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
-    "lint": "node scripts/check.mjs"
+    "lint": "node scripts/check.mjs",
+    "website-md:check": "node packages/website-md/bin/website-md.mjs check",
+    "publish:packages": "node scripts/publish-packages.mjs",
+    "publish:packages:dry-run": "node scripts/publish-packages.mjs --dry-run",
+    "publish:example": "node scripts/publish-example.mjs",
+    "publish:example:dry-run": "node scripts/publish-example.mjs --dry-run"
   }
 }

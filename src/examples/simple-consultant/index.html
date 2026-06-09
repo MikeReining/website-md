@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rivera Consulting — Real Website.md Example</title>
+    <meta name="description" content="An inspectable Website.md example: a consultant site with real instruction files, source, validation, and deploy steps.">
+    <link rel="canonical" href="https://websitemd.org/examples/simple-consultant/">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="/">Website.md</a>
+        <div class="nav-links">
+          <a href="/spec/">Spec</a>
+          <a href="/examples/">Examples</a>
+          <a href="/guides/create-site/">Create site</a>
+          <a href="/docs/cli/">CLI</a>
+          <a href="https://github.com/MikeReining/website-md">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="doc case-study">
+      <p class="eyebrow">Real example</p>
+      <h1>Rivera Consulting</h1>
+      <p>A one-page consultant site built from the Website.md starter and customized by an AI agent. Every artifact in this example is in the public repo and passes the portable checker.</p>
+      <div class="inline-actions">
+        <a class="button primary" href="https://github.com/MikeReining/website-md/tree/main/examples/simple-consultant">View source in repo</a>
+        <a class="button secondary" href="https://github.com/MikeReining/website-md/blob/main/examples/simple-consultant/WEBSITE.md">Read WEBSITE.md</a>
+        <a class="button secondary" href="/examples/">Back to examples</a>
+      </div>
+
+      <h2>What to inspect</h2>
+      <div class="workflow-list">
+        <article>
+          <h3><a href="https://github.com/MikeReining/website-md/blob/main/examples/simple-consultant/WEBSITE.md">WEBSITE.md</a></h3>
+          <p>Routes, content sources, editing rules, preview commands, and publishing policy.</p>
+        </article>
+        <article>
+          <h3><a href="https://github.com/MikeReining/website-md/blob/main/examples/simple-consultant/EDIT-SUMMARY.md">EDIT-SUMMARY.md</a></h3>
+          <p>The agent prompt, what changed, and how validation was run.</p>
+        </article>
+        <article>
+          <h3><a href="https://github.com/MikeReining/website-md/blob/main/examples/simple-consultant/src/index.html">src/index.html</a></h3>
+          <p>The rendered page with <code>data-wmd-source</code> mappings.</p>
+        </article>
+        <article>
+          <h3><a href="https://github.com/MikeReining/website-md/blob/main/examples/simple-consultant/README.md">README.md</a></h3>
+          <p>Local run and deploy instructions for publishing as a standalone repo.</p>
+        </article>
+      </div>
+
+      <h2>Validation</h2>
+      <pre><code>cd examples/simple-consultant
+npm run check
+npx website-md check</code></pre>
+
+      <h2>Deploy path</h2>
+      <p>Push the example folder to a public repo, run <code>npm run build</code>, deploy <code>dist/</code> to Vercel or similar, then add the live URL here. Until then, treat this as a repo-inspectable real example—not a claimed live customer deployment.</p>
+    </main>
+  </body>
+</html>
